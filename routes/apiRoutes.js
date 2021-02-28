@@ -4,6 +4,7 @@ let noteData = require('../Develop/db/db.json');
 module.exports = function (app) {
 
     // Read JSON file and returns saved notes to JSON
+    // Function is activated once URL matches path
     app.get("/api/notes", function (req, res) {
         res.json(noteData);
     });
@@ -14,7 +15,8 @@ module.exports = function (app) {
         res.json(true);
     });
 
-
-    app.post("")
+    app.delete("/api/notes/:id", function (req, res) {
+        // Deletes a note via ID
+    });
 
 }
