@@ -3,7 +3,7 @@ let noteData = require('../Develop/db/db.json');
 
 module.exports = function (app) {
 
-    // Read JSON file and returns saved notes to JSON
+    // Read JSON file and returns all saved notes to JSON
     // Function is activated once URL matches path
     app.get("/api/notes", function (req, res) {
         res.json(noteData);
