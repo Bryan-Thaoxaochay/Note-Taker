@@ -3,20 +3,24 @@ let noteData = require('../Develop/db/db.json');
 const fs = require('fs');
 
 module.exports = function (app) {
-
-
+    
+    // Adding id to each object
+    noteData.forEach((item) => {item.id = Math.floor(Math.random()*1000) + 1;});
 
     // Read JSON file and returns all saved notes to JSON
     app.get("/api/notes", function (req, res) {
-        // Adding id to each object
-        let noteDataID = noteData.forEach((item, i) => {item.id = i + 1;});
-        res.json(noteDataID);
-    });
+        res.json(noteData);
+    }); // app.get
 
     // New note return to client
     app.post("/api/notes", function (req, res) {
         
         let newNoteBody = req.body;
+
+        // Does the body automatically save into a JSON?
+        // If it does, how can I separate the new note from the old notes in the body?
+
+        newNoteBody.forEach((item) => {item.id = Math.floor(Math.random()*1000) + 1;});
 
         for (let i = 0; i < noteData.length; i++) {
 
@@ -24,7 +28,7 @@ module.exports = function (app) {
             if (noteData[i].id != newNoteBody.id) {
 
                 // Pushing new note to noteData JSON
-                let newNote = noteData.push(newNoteBody[i]);
+                noteData.push(newNoteBody);
 
                 // Rewriting notes to db.json
                 fs.readFile('../Develop/db/db.json', 'utf8', function (error, data){
@@ -32,8 +36,11 @@ module.exports = function (app) {
                         console.error(error);
                     };
                                 
-                    fs.writeFile('../Develop/db/db.json', newNote, 'utf8', (error) => error ? 'error' : 'Note deleted');
+                    fs.writeFile('../Develop/db/db.json', noteData, 'utf8', (error) => error ? 'error' : 'Note deleted');
                 }) // Read File
+
+                // Returning noteData to client
+                res.json(noteData);
                 
             } else {
 
@@ -42,8 +49,7 @@ module.exports = function (app) {
             } // If Statement
         } // For Loop
 
-        res.json(true);
-    });
+    }); // app.post
 
 
 
@@ -58,18 +64,20 @@ module.exports = function (app) {
                 let index = noteData.indexOf(noteData[i]);
 
                 // Deleting that note
-                let deleteNote = noteData.splice(index, 1);
+                noteData.splice(index, 1);
 
                 // Rewriting notes to db.json
                 fs.readFile('../Develop/db/db.json', 'utf8', function (error, data){
                     if (error){
                         console.error(error);
                     };
-                                
-                    fs.writeFile('../Develop/db/db.json', deleteNote, 'utf8', (error) => error ? 'error' : 'Note deleted');
+                    
+                    // Sending updated noteData back to db.json
+                    fs.writeFile('../Develop/db/db.json', noteData, 'utf8', (error) => error ? 'error' : 'Note deleted');
                 }) // Read File
             } // If Statement
         } // For Loop
+
     }); // app.delete
 
 }
