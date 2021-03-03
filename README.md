@@ -10,7 +10,7 @@ HTML5, CSS3, Bootstrap3, JavaScript, jQuery, node.js, express.js
 
 ## Screenshots
 
-![](images/)
+![](images/Notes-Screenshot.png)
 
 ## Links
 
