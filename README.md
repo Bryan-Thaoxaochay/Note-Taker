@@ -10,13 +10,13 @@ HTML5, CSS3, Bootstrap3, JavaScript, jQuery, node.js, express.js
 
 ## Screenshots
 
-![](images/Notes-Screenshot.png)
+![](images/note-taker.gif)
 
 ## Links
 
 ### Heroku Deployment Link
 
-Have to deploy again.
+https://sheltered-falls-42677.herokuapp.com/
 
 ### Github Repo
 https://github.com/Bryan-Thaoxaochay/Note-Taker 
