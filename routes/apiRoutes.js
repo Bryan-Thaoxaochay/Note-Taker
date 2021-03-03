@@ -5,6 +5,9 @@ const path = require("path");
 
 module.exports = function (app) {
 
+    // Adding id to each object
+    noteData.forEach((item, i) => {item.id = i + 1;});
+
     // Read JSON file and returns all saved notes to JSON
     app.get("/api/notes", function (req, res) {
         res.json(noteData);
@@ -24,8 +27,10 @@ module.exports = function (app) {
             
             // Sending updated noteData back to db.json
             fs.writeFile(path.join(__dirname, '../db/db.json'), JSON.stringify(noteData, '\n'), 'utf8', (error) => error ? 'error' : 'Note added');
+
         }) // Read File
 
+        // Sending updated noteData back to body
         res.json(noteData);
 
     }); // app.post
@@ -34,13 +39,13 @@ module.exports = function (app) {
 
     app.delete("/api/notes/:id", function (req, res) {
 
-        // Adding id to each object
-        noteData.forEach((item, i) => {item.id = i + 1;});
+        // // Adding id to each object
+        // noteData.forEach((item, i) => {item.id = i + 1;});
         
-        let oldNoteBody = req.params.id;
+        let noteID = req.params.id;
 
         for (let i = 0; i < noteData.length; i++) {
-            if (noteData[i].id == oldNoteBody.id) {
+            if (noteData[i].id == noteID) {
 
                 // Getting index of note
                 let index = noteData.indexOf(noteData[i]);
@@ -56,6 +61,7 @@ module.exports = function (app) {
                     
                     // Sending updated noteData back to db.json
                     fs.writeFile(path.join(__dirname, '../db/db.json'), JSON.stringify(noteData, '\n'), 'utf8', (error) => error ? 'error' : 'Note deleted');
+
                 }) // Read File
 
                 // Sending updated noteData back to body
