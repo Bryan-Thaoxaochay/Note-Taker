@@ -17,41 +17,7 @@ module.exports = function (app) {
         
         let newNoteBody = req.body;
         noteData.push(newNoteBody);
-        res.json(newNoteBody);
-
-        // if (newNoteBody !== "") {
-
-        //     newNoteBody.forEach((item, i) => {item.id = i + 1;});
-
-        //     for (let i = 0; i < noteData.length; i++) {
-
-        //         // Looping through to find the new note
-        //         if (noteData[i].id != newNoteBody[i].id) {
-
-        //             // Pushing new note to noteData JSON
-        //             noteData.push(newNoteBody);
-
-        //             // Rewriting notes to db.json
-        //             fs.readFile('../Develop/db/db.json', 'utf8', function (error, data){
-        //                 if (error){
-        //                     console.error(error);
-        //                 };
-                                    
-        //                 fs.writeFile('../Develop/db/db.json', noteData, 'utf8', (error) => error ? 'error' : 'Note deleted');
-        //             }) // Read File
-
-        //             // Returning noteData to client
-        //             res.json(noteData);
-                    
-        //         } else {
-
-        //             console.log("This note already exists.")
-
-        //         } // If Statement
-        //     } // For Loop
-        // } else {
-        //     console.log("There are no notes");
-        // };
+        res.json(noteData);
 
     }); // app.post
 
