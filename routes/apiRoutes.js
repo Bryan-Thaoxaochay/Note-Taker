@@ -38,9 +38,6 @@ module.exports = function (app) {
 
 
     app.delete("/api/notes/:id", function (req, res) {
-
-        // // Adding id to each object
-        // noteData.forEach((item, i) => {item.id = i + 1;});
         
         let noteID = req.params.id;
 
