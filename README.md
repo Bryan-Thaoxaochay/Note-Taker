@@ -8,7 +8,7 @@ The user can add and save notes, review notes they've saved already, and delete 
 
 HTML5, CSS3, Bootstrap3, JavaScript, jQuery, node.js, express.js
 
-## Screenshots
+## Walkthrough
 
 ![](images/note-taker.gif)
 
@@ -39,6 +39,10 @@ Since there was separation of concerns, routing was very important. The most dif
 4. Heroku Deployment
 
 This is my first Heroku app that is going to be deployed, and it was a process learning how to do it. Heroku is just another useful technology to use, and I am still learning it's full capabilities.
+
+5. Creating Gifs
+
+This is the first time I created a gif and uploaded it to the README. It makes it easier to see what the app does. For Windows, I used Screentogif which was downloaded from the Microsoft store. I added it to my images folder and routed it into the here. It is above under "Walkthrough".
 
 ## Contact Information
 
